@@ -8,18 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */; };
-		F46305ED2666495E00D1C6FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305EC2666495E00D1C6FE /* ContentView.swift */; };
 		F46305EF2666496000D1C6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46305EE2666496000D1C6FE /* Assets.xcassets */; };
 		F46305F22666496000D1C6FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46305F12666496000D1C6FE /* Preview Assets.xcassets */; };
+		F46305FE266649B100D1C6FE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305FD266649B100D1C6FE /* Tile.swift */; };
+		F463060626664A0600D1C6FE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060526664A0600D1C6FE /* Board.swift */; };
+		F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060926664A3D00D1C6FE /* BoardManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F46305E72666495E00D1C6FE /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeApp.swift; sourceTree = "<group>"; };
-		F46305EC2666495E00D1C6FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F46305EE2666496000D1C6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F46305F12666496000D1C6FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F46305F32666496000D1C6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46305FD266649B100D1C6FE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F463060526664A0600D1C6FE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		F463060926664A3D00D1C6FE /* BoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */,
-				F46305EC2666495E00D1C6FE /* ContentView.swift */,
+				F46305FA2666497400D1C6FE /* Views */,
+				F46305FB2666498300D1C6FE /* View Models */,
+				F46305FC2666498F00D1C6FE /* Models */,
 				F46305EE2666496000D1C6FE /* Assets.xcassets */,
 				F46305F32666496000D1C6FE /* Info.plist */,
 				F46305F02666496000D1C6FE /* Preview Content */,
@@ -67,6 +73,30 @@
 				F46305F12666496000D1C6FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F46305FA2666497400D1C6FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F463060526664A0600D1C6FE /* Board.swift */,
+				F46305FD266649B100D1C6FE /* Tile.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F46305FB2666498300D1C6FE /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				F463060926664A3D00D1C6FE /* BoardManager.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		F46305FC2666498F00D1C6FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46305ED2666495E00D1C6FE /* ContentView.swift in Sources */,
+				F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */,
+				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
+				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
