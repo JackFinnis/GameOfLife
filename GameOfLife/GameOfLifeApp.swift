@@ -9,14 +9,9 @@ import SwiftUI
 
 @main
 struct GameOfLifeApp: App {
-    
-    // Game of life manager
-    @StateObject var gameManager = GameManager()
-    
     var body: some Scene {
         WindowGroup {
-            Board()
-                .environmentObject(gameManager)
+            GameView()
         }
     }
 }

@@ -10,18 +10,22 @@ import SwiftUI
 struct Tile: View {
     @EnvironmentObject var gameManager: GameManager
     
-    var position: (Int, Int)
+    var x: Int
+    var y: Int
     
-    var colour: Color {
-        if gameManager.board[position.0][position.1] == true {
-            return Color.white
+    var tileColour: UIColor {
+        if gameManager.board[x][y] == true {
+            return UIColor.white
         } else {
-            return Color.black
+            return UIColor.black
         }
     }
     
     var body: some View {
-        Color(.black)
-            .frame(width: 20, height: 20)
+        Color(tileColour)
+            .frame(width: 30, height: 30)
+            .onTapGesture {
+                gameManager.board[x][y].toggle()
+            }
     }
 }

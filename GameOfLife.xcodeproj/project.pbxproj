@@ -13,6 +13,8 @@
 		F46305FE266649B100D1C6FE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305FD266649B100D1C6FE /* Tile.swift */; };
 		F463060626664A0600D1C6FE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060526664A0600D1C6FE /* Board.swift */; };
 		F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060926664A3D00D1C6FE /* BoardManager.swift */; };
+		F463060D2666742600D1C6FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060C2666742600D1C6FE /* GameView.swift */; };
+		F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46306102666745100D1C6FE /* FloatingButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F46305FD266649B100D1C6FE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F463060526664A0600D1C6FE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		F463060926664A3D00D1C6FE /* BoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
+		F463060C2666742600D1C6FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		F46306102666745100D1C6FE /* FloatingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 		F46305FA2666497400D1C6FE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F463060C2666742600D1C6FE /* GameView.swift */,
+				F46306102666745100D1C6FE /* FloatingButtons.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
 			);
@@ -171,7 +177,9 @@
 				F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */,
 				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
+				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
+				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

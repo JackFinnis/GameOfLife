@@ -11,6 +11,16 @@ struct Board: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        Tile(position: (0, 0))
+        ScrollView([.horizontal, .vertical]) {
+            HStack(spacing: 1) {
+                ForEach(0...gameManager.size-1, id: \.self) { x in
+                    VStack(spacing: 1) {
+                        ForEach(0...gameManager.size-1, id: \.self) { y in
+                            Tile(x: x, y: y)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
