@@ -10,10 +10,10 @@ import Combine
 
 class GameManager: ObservableObject {
     // MARK: - Properties
-    @Published var size: Int = 25
+    @Published var size: Int = 50
     @Published var playing: Bool = false
     @Published var speed: Double = 0.5
-    @Published var today: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 25), count: 25), yesterday: nil, tomorrow: nil)
+    @Published var today: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil, tomorrow: nil)
     
     private var cancellable: Cancellable?
     var autoplayImage: String {
