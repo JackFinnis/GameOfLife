@@ -1,5 +1,5 @@
 //
-//  BoardManager.swift
+//  GameManager.swift
 //  GameOfLife
 //
 //  Created by Finnis on 01/06/2021.
@@ -12,8 +12,8 @@ class GameManager: ObservableObject {
     
     @Published var size: Int = 10
     @Published var board = [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10)
-    @Published var speed: Double = 0.5
     @Published var playing: Bool = false
+    @Published var autoplaySpeed: AutoplaySpeed = .slow
     
     var cancellable: Cancellable?
     var autoplayImage: String {
@@ -24,18 +24,54 @@ class GameManager: ObservableObject {
         }
     }
     
-    // Start game of life autoplay
+    // Reset the board
+    func resetGame() {
+        stopAutoplay()
+        board = [[Bool]](repeating: [Bool](repeating: false, count: size), count: size)
+    }
+    
+    // Reset autoplay speed
+    func toggleAutoplaySpeed() {
+        if autoplaySpeed == .slow {
+            autoplaySpeed = .fast
+        } else {
+            autoplaySpeed = .slow
+        }
+        startAutoplay()
+    }
+    
+    // Start autoplay
     func startAutoplay() {
+        playing = true
+        var speed: Double {
+            if autoplaySpeed == .slow {
+                return 0.6
+            } else {
+                return 0.2
+            }
+        }
         cancellable = Timer.publish(every: speed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                self.nextDay()
+                self.next()
             }
     }
     
-    // Iterate the next day of the game of life
+    // Stop autoplay
+    func stopAutoplay() {
+        cancellable?.cancel()
+        playing = false
+    }
+    
+    // Step one day into game
     func nextDay() {
+        stopAutoplay()
+        next()
+    }
+    
+    // Calculate the next day
+    func next() {
         let countBoard = getCountBoard()
         
         // Update the board

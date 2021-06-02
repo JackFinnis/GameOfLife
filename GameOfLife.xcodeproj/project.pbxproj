@@ -12,9 +12,11 @@
 		F46305F22666496000D1C6FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46305F12666496000D1C6FE /* Preview Assets.xcassets */; };
 		F46305FE266649B100D1C6FE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305FD266649B100D1C6FE /* Tile.swift */; };
 		F463060626664A0600D1C6FE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060526664A0600D1C6FE /* Board.swift */; };
-		F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060926664A3D00D1C6FE /* BoardManager.swift */; };
+		F463060A26664A3D00D1C6FE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060926664A3D00D1C6FE /* GameManager.swift */; };
 		F463060D2666742600D1C6FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060C2666742600D1C6FE /* GameView.swift */; };
 		F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46306102666745100D1C6FE /* FloatingButtons.swift */; };
+		F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */; };
+		F46306232667777500D1C6FE /* AutoplaySpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46306222667777500D1C6FE /* AutoplaySpeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +27,11 @@
 		F46305F32666496000D1C6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46305FD266649B100D1C6FE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F463060526664A0600D1C6FE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		F463060926664A3D00D1C6FE /* BoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
+		F463060926664A3D00D1C6FE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		F463060C2666742600D1C6FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		F46306102666745100D1C6FE /* FloatingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtons.swift; sourceTree = "<group>"; };
+		F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonStyle.swift; sourceTree = "<group>"; };
+		F46306222667777500D1C6FE /* AutoplaySpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoplaySpeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			children = (
 				F463060C2666742600D1C6FE /* GameView.swift */,
 				F46306102666745100D1C6FE /* FloatingButtons.swift */,
+				F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
 			);
@@ -93,7 +98,7 @@
 		F46305FB2666498300D1C6FE /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				F463060926664A3D00D1C6FE /* BoardManager.swift */,
+				F463060926664A3D00D1C6FE /* GameManager.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 		F46305FC2666498F00D1C6FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F46306222667777500D1C6FE /* AutoplaySpeed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,11 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F463060A26664A3D00D1C6FE /* BoardManager.swift in Sources */,
+				F463060A26664A3D00D1C6FE /* GameManager.swift in Sources */,
 				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
+				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
+				F46306232667777500D1C6FE /* AutoplaySpeed.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

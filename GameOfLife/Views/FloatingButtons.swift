@@ -11,79 +11,47 @@ struct FloatingButtons: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack {
             Spacer()
-            
-            if gameManager.playing {
-                HStack {
-                    Text("Slow")
-                    Slider(value: $gameManager.speed, in: 0.1...0.9, step: 0.2)
-                    Text("Fast")
-                }
-                .padding()
-                .background(Color(UIColor.systemBackground))
-                .clipShape(Capsule())
-                .compositingGroup()
-                .shadow(radius: 2, y: 2)
-                .padding(.horizontal, 20)
-            }
-            
             HStack(spacing: 0) {
                 Button(action: {
-                    gameManager.cancellable?.cancel()
-                    gameManager.playing = false
-                    gameManager.board = [[Bool]](repeating: [Bool](repeating: false, count: gameManager.size), count: gameManager.size)
+                    gameManager.resetGame()
                 }, label: {
-                    Label("Clear", systemImage: "clear")
+                    Image(systemName: "clear")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 })
-                .padding()
-                .foregroundColor(.accentColor)
-                .background(Color(UIColor.systemBackground))
-                .clipShape(Capsule())
-                .compositingGroup()
-                .shadow(radius: 2, y: 2)
-                .padding(.horizontal, 10)
                 
                 Button(action: {
-                    updateGameAutoplay()
-                    gameManager.playing.toggle()
+                    if gameManager.playing {
+                        gameManager.stopAutoplay()
+                    } else {
+                        gameManager.startAutoplay()
+                    }
                 }, label: {
                     Image(systemName: gameManager.autoplayImage)
-                        .font(.title)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.accentColor)
-                        .clipShape(Circle())
-                        .compositingGroup()
-                        .shadow(radius: 2, y: 2)
-                        .padding(.horizontal, 10)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 })
                 
                 Button(action: {
-                    gameManager.cancellable?.cancel()
-                    gameManager.playing = false
+                    gameManager.toggleAutoplaySpeed()
+                }, label: {
+                    Image(systemName: gameManager.autoplaySpeed.rawValue)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                })
+                
+                Button(action: {
                     gameManager.nextDay()
                 }, label: {
-                    Label("Next", systemImage: "arrowshape.turn.up.right")
+                    Image(systemName: "arrowshape.turn.up.right")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 })
-                .padding()
-                .foregroundColor(.accentColor)
-                .background(Color(UIColor.systemBackground))
-                .clipShape(Capsule())
-                .compositingGroup()
-                .shadow(radius: 2, y: 2)
-                .padding(.horizontal, 10)
             }
             .padding()
-        }
-        .animation(.default)
-    }
-    
-    func updateGameAutoplay() {
-        if gameManager.playing {
-            gameManager.cancellable?.cancel()
-        } else {
-            gameManager.startAutoplay()
+            .buttonStyle(SimpleButtonStyle())
         }
     }
 }
