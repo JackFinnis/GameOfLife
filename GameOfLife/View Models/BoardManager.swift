@@ -10,14 +10,23 @@ import Combine
 
 class GameManager: ObservableObject {
     
-    let size: Int = 10
-    
+    @Published var size: Int = 10
     @Published var board = [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10)
-    @Published var cancellable: Cancellable?
+    @Published var speed: Double = 0.5
+    @Published var playing: Bool = false
+    
+    var cancellable: Cancellable?
+    var autoplayImage: String {
+        if playing {
+            return "stop.fill"
+        } else {
+            return "play.fill"
+        }
+    }
     
     // Start game of life autoplay
     func startAutoplay() {
-        cancellable = Timer.publish(every: 0.5, on: .main, in: .default)
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }

@@ -10,21 +10,28 @@ import SwiftUI
 struct FloatingButtons: View {
     @EnvironmentObject var gameManager: GameManager
     
-    @State var playing: Bool = false
-    var autoplayImage: String {
-        if playing {
-            return "stop.fill"
-        } else {
-            return "play.fill"
-        }
-    }
-    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer()
+            
+            if gameManager.playing {
+                HStack {
+                    Text("Slow")
+                    Slider(value: $gameManager.speed, in: 0.1...0.9, step: 0.2)
+                    Text("Fast")
+                }
+                .padding()
+                .background(Color(UIColor.systemBackground))
+                .clipShape(Capsule())
+                .compositingGroup()
+                .shadow(radius: 2, y: 2)
+                .padding(.horizontal, 20)
+            }
+            
             HStack(spacing: 0) {
                 Button(action: {
                     gameManager.cancellable?.cancel()
+                    gameManager.playing = false
                     gameManager.board = [[Bool]](repeating: [Bool](repeating: false, count: gameManager.size), count: gameManager.size)
                 }, label: {
                     Label("Clear", systemImage: "clear")
@@ -39,9 +46,9 @@ struct FloatingButtons: View {
                 
                 Button(action: {
                     updateGameAutoplay()
-                    playing.toggle()
+                    gameManager.playing.toggle()
                 }, label: {
-                    Image(systemName: autoplayImage)
+                    Image(systemName: gameManager.autoplayImage)
                         .font(.title)
                         .padding()
                         .foregroundColor(.white)
@@ -54,6 +61,7 @@ struct FloatingButtons: View {
                 
                 Button(action: {
                     gameManager.cancellable?.cancel()
+                    gameManager.playing = false
                     gameManager.nextDay()
                 }, label: {
                     Label("Next", systemImage: "arrowshape.turn.up.right")
@@ -68,10 +76,11 @@ struct FloatingButtons: View {
             }
             .padding()
         }
+        .animation(.default)
     }
     
     func updateGameAutoplay() {
-        if playing {
+        if gameManager.playing {
             gameManager.cancellable?.cancel()
         } else {
             gameManager.startAutoplay()
