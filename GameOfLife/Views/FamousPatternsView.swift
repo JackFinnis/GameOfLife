@@ -29,11 +29,11 @@ struct FamousPatternsView: View {
             }
             .navigationTitle("Famous Patterns")
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
                         showFamousPatternsSheet = false
                     }, label: {
-                        Text("Done")
+                        Text("Cancel")
                     })
                 }
             }

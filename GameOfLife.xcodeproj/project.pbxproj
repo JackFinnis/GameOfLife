@@ -21,6 +21,11 @@
 		F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DE52667F5F000EBF81A /* JsonLoader.swift */; };
 		F4652DEC2667FB1C00EBF81A /* FamousPatterns.json in Resources */ = {isa = PBXBuildFile; fileRef = F4652DDB2667F2C700EBF81A /* FamousPatterns.json */; };
 		F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DF32668039500EBF81A /* FamousPatternsView.swift */; };
+		F4652DF826681B3A00EBF81A /* SaveNewPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */; };
+		F4652DFC2668203700EBF81A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DFB2668203700EBF81A /* PersistenceController.swift */; };
+		F4652E012668211E00EBF81A /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */; };
+		F4652E0426682A2600EBF81A /* SavedPatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652E0326682A2600EBF81A /* SavedPatternsView.swift */; };
+		F4652E0726682F6300EBF81A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652E0626682F6200EBF81A /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,11 @@
 		F4652DE12667F3BF00EBF81A /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		F4652DE52667F5F000EBF81A /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		F4652DF32668039500EBF81A /* FamousPatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousPatternsView.swift; sourceTree = "<group>"; };
+		F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewPatternView.swift; sourceTree = "<group>"; };
+		F4652DFB2668203700EBF81A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		F4652E002668211E00EBF81A /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
+		F4652E0326682A2600EBF81A /* SavedPatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPatternsView.swift; sourceTree = "<group>"; };
+		F4652E0626682F6200EBF81A /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +85,13 @@
 				F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */,
 				F46305EE2666496000D1C6FE /* Assets.xcassets */,
 				F46305F32666496000D1C6FE /* Info.plist */,
+				F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */,
 				F46305FA2666497400D1C6FE /* Views */,
 				F46305FB2666498300D1C6FE /* View Models */,
 				F4652DBA26679A0F00EBF81A /* Models */,
-				F4652DDA2667F28D00EBF81A /* Data */,
+				F4652DFA2668200C00EBF81A /* Persistance */,
+				F4652E09266832AF00EBF81A /* Formatters */,
+				F4652DDA2667F28D00EBF81A /* Model Data */,
 				F46305F02666496000D1C6FE /* Preview Content */,
 			);
 			path = GameOfLife;
@@ -98,6 +111,9 @@
 				F463060C2666742600D1C6FE /* GameView.swift */,
 				F46306102666745100D1C6FE /* FloatingButtons.swift */,
 				F4652DF32668039500EBF81A /* FamousPatternsView.swift */,
+				F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */,
+				F4652E0326682A2600EBF81A /* SavedPatternsView.swift */,
+				F4652E0626682F6200EBF81A /* SearchBar.swift */,
 				F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
@@ -122,13 +138,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F4652DDA2667F28D00EBF81A /* Data */ = {
+		F4652DDA2667F28D00EBF81A /* Model Data */ = {
 			isa = PBXGroup;
 			children = (
 				F4652DDB2667F2C700EBF81A /* FamousPatterns.json */,
+			);
+			path = "Model Data";
+			sourceTree = "<group>";
+		};
+		F4652DFA2668200C00EBF81A /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				F4652DFB2668203700EBF81A /* PersistenceController.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		F4652E09266832AF00EBF81A /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
 				F4652DE52667F5F000EBF81A /* JsonLoader.swift */,
 			);
-			path = Data;
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,11 +236,16 @@
 				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
+				F4652E0426682A2600EBF81A /* SavedPatternsView.swift in Sources */,
+				F4652E0726682F6300EBF81A /* SearchBar.swift in Sources */,
+				F4652E012668211E00EBF81A /* Main.xcdatamodeld in Sources */,
 				F4652DE22667F3BF00EBF81A /* Pattern.swift in Sources */,
+				F4652DF826681B3A00EBF81A /* SaveNewPatternView.swift in Sources */,
 				F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
 				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
+				F4652DFC2668203700EBF81A /* PersistenceController.swift in Sources */,
 				F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
@@ -400,6 +436,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4652E002668211E00EBF81A /* Main.xcdatamodel */,
+			);
+			currentVersion = F4652E002668211E00EBF81A /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F46305DF2666495E00D1C6FE /* Project object */;
 }

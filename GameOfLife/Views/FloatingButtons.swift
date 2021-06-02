@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct FloatingButtons: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     @EnvironmentObject var gameManager: GameManager
     @Binding var scale: CGFloat
     
     @State var showFamousPatternsSheet: Bool = false
+    @State var showSavedPatternsSheet: Bool = false
+    @State var showSaveNewPatternSheet: Bool = false
+    
+    var autoplayImage: String {
+        if gameManager.playing {
+            return "stop.fill"
+        } else {
+            return "play.fill"
+        }
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,32 +46,44 @@ struct FloatingButtons: View {
                 .shadow(radius: 2, y: 2)
                 .padding(.trailing, 15)
                 
-                // Reset board
+                // Display famous patterns
                 Button(action: {
-                    gameManager.resetGame()
+                    showFamousPatternsSheet = true
                 }, label: {
-                    Image(systemName: "clear")
+                    Image(systemName: "safari")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                })
+                }).sheet(isPresented: $showFamousPatternsSheet) {
+                    FamousPatternsView(showFamousPatternsSheet: $showFamousPatternsSheet)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                        .environmentObject(gameManager)
+                }
                 
                 // Paste saved day
                 Button(action: {
-                    gameManager.loadSavedDay()
+                    showSavedPatternsSheet = true
                 }, label: {
                     Image(systemName: "doc.on.clipboard")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                })
+                }).sheet(isPresented: $showSavedPatternsSheet) {
+                    SavedPatternsView(showSavedPatternsSheet: $showSavedPatternsSheet)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                        .environmentObject(gameManager)
+                }
                 
                 // Copy today
                 Button(action: {
-                    gameManager.saveToday()
+                    showSaveNewPatternSheet = true
                 }, label: {
                     Image(systemName: "doc.on.doc")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                })
+                }).sheet(isPresented: $showSaveNewPatternSheet) {
+                    SaveNewPatternView(showSaveNewPatternSheet: $showSaveNewPatternSheet)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                        .environmentObject(gameManager)
+                }
                 
                 // Toggle autoplay
                 Button(action: {
@@ -69,7 +93,7 @@ struct FloatingButtons: View {
                         gameManager.startAutoplay()
                     }
                 }, label: {
-                    Image(systemName: gameManager.autoplayImage)
+                    Image(systemName: autoplayImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
@@ -92,23 +116,21 @@ struct FloatingButtons: View {
                         .aspectRatio(contentMode: .fit)
                 })
                 
-                // Display famous patterns
+                // Reset board
                 Button(action: {
-                    showFamousPatternsSheet = true
+                    gameManager.resetGame()
                 }, label: {
-                    Image(systemName: "safari")
+                    Image(systemName: "clear")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }).sheet(isPresented: $showFamousPatternsSheet) {
-                    FamousPatternsView(showFamousPatternsSheet: $showFamousPatternsSheet)
-                }
+                })
                 
                 // Zoom level slider
                 HStack(spacing: 0) {
                     Text("Zoom")
                         .padding(.leading, 20)
                         .padding(.vertical, 10)
-                    Slider(value: $scale, in: 0.3...1)
+                    Slider(value: $scale, in: 0.3...0.9)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 10)
                 }

@@ -13,9 +13,8 @@ struct SimpleButtonStyle: ButtonStyle {
             .frame(width: 25, height: 25)
             .padding()
             .foregroundColor(.accentColor)
-            .background(Color.white.opacity(
-                configuration.isPressed ? 0.5 : 1
-            ))
+            .background(Color(UIColor.systemBackground))
+            .opacity(configuration.isPressed ? 0.5 : 1)
             .clipShape(Circle())
             .compositingGroup()
             .shadow(radius: 2, y: 2)

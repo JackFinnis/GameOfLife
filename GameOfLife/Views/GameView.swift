@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct GameView: View {
+    // Board Sizes:
+    //  - 25 for iPhone
+    //  - 50 for iPad
     @StateObject var gameManager = GameManager(size: 50)
-    @State var scale: CGFloat = 1
+    @State var scale: CGFloat = 0.9
     
     var body: some View {
         ZStack {
