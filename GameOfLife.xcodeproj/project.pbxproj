@@ -16,7 +16,7 @@
 		F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46306102666745100D1C6FE /* FloatingButtons.swift */; };
 		F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */; };
 		F4630629266780B700D1C6FE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4630628266780B700D1C6FE /* GameManager.swift */; };
-		F4652DBC26679A2E00EBF81A /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DBB26679A2E00EBF81A /* History.swift */; };
+		F4652DC22667A58100EBF81A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC12667A58100EBF81A /* Day.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		F46306102666745100D1C6FE /* FloatingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtons.swift; sourceTree = "<group>"; };
 		F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonStyle.swift; sourceTree = "<group>"; };
 		F4630628266780B700D1C6FE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
-		F4652DBB26679A2E00EBF81A /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		F4652DC12667A58100EBF81A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 		F4652DBA26679A0F00EBF81A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4652DBB26679A2E00EBF81A /* History.swift */,
+				F4652DC12667A58100EBF81A /* Day.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,8 +185,8 @@
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
+				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
 				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
-				F4652DBC26679A2E00EBF81A /* History.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

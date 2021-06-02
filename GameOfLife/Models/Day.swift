@@ -1,5 +1,5 @@
 //
-//  LinkedList.swift
+//  Day.swift
 //  GameOfLife
 //
 //  Created by Finnis on 02/06/2021.

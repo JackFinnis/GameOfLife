@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Board: View {
     @EnvironmentObject var gameManager: GameManager
+    @Binding var scale: CGFloat
     
     var body: some View {
         ScrollView([.horizontal, .vertical], showsIndicators: false) {
@@ -21,6 +22,7 @@ struct Board: View {
                     }
                 }
             }
+            .scaleEffect(scale)
         }
     }
 }
