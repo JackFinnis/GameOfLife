@@ -17,6 +17,8 @@
 		F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */; };
 		F4630629266780B700D1C6FE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4630628266780B700D1C6FE /* GameManager.swift */; };
 		F4652DC22667A58100EBF81A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC12667A58100EBF81A /* Day.swift */; };
+		F4652DC62667CC6E00EBF81A /* StoredBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC52667CC6E00EBF81A /* StoredBoard.swift */; };
+		F4652DD02667CDA100EBF81A /* BoardDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonStyle.swift; sourceTree = "<group>"; };
 		F4630628266780B700D1C6FE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		F4652DC12667A58100EBF81A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		F4652DC52667CC6E00EBF81A /* StoredBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredBoard.swift; sourceTree = "<group>"; };
+		F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				F4652DC12667A58100EBF81A /* Day.swift */,
+				F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */,
+				F4652DC52667CC6E00EBF81A /* StoredBoard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,8 +188,10 @@
 			files = (
 				F4630629266780B700D1C6FE /* GameManager.swift in Sources */,
 				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
+				F4652DC62667CC6E00EBF81A /* StoredBoard.swift in Sources */,
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
+				F4652DD02667CDA100EBF81A /* BoardDataStore.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
 				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,

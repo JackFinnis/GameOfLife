@@ -10,12 +10,17 @@ import Combine
 
 class GameManager: ObservableObject {
     // MARK: - Properties
+    // Board Sizes:
+    //  - 25 for iPhone
+    //  - 50 for iPad
     @Published var size: Int = 50
     @Published var playing: Bool = false
     @Published var speed: Double = 0.5
     @Published var today: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil, tomorrow: nil)
     
-    private var cancellable: Cancellable?
+    var cancellable: Cancellable?
+    var boardDataStore = BoardDataStore()
+    var savedDay: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil, tomorrow: nil)
     var autoplayImage: String {
         if playing {
             return "stop.fill"
@@ -24,7 +29,7 @@ class GameManager: ObservableObject {
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
     // Calculate the next day
     private func next() {
         let countBoard = getCountBoard()
@@ -89,11 +94,27 @@ class GameManager: ObservableObject {
         return newCountBoard
     }
     
-    // MARK: - Game State Control
+    // Return an empty board
+    private func getEmptyBoard() -> [[Bool]] {
+        [[Bool]](repeating: [Bool](repeating: false, count: size), count: size)
+    }
+    
+    // MARK: - Public Methods
     // Reset the board
     func resetGame() {
         stopAutoplay()
-        today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: size), count: size), yesterday: nil, tomorrow: nil)
+        today = Day(board: getEmptyBoard(), yesterday: nil, tomorrow: nil)
+    }
+    
+    // Save the current day
+    func saveToday() {
+        print(today.board)
+        savedDay = today
+    }
+    
+    // Load saved day
+    func loadSavedDay() {
+        today = savedDay
     }
     
     // Start autoplay
@@ -129,5 +150,10 @@ class GameManager: ObservableObject {
         } else {
             next()
         }
+    }
+    
+    // Load stored boards
+    func loadStoredBoard(board: StoredBoard) {
+        today = Day(board: boardDataStore.getBoard(board: board), yesterday: nil, tomorrow: nil)
     }
 }
