@@ -11,7 +11,7 @@ struct Board: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        ScrollView([.horizontal, .vertical]) {
+        ScrollView([.horizontal, .vertical], showsIndicators: false) {
             HStack(spacing: 1) {
                 ForEach(0...gameManager.size-1, id: \.self) { x in
                     VStack(spacing: 1) {

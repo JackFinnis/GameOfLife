@@ -10,8 +10,10 @@ import SwiftUI
 struct FloatingButtons: View {
     @EnvironmentObject var gameManager: GameManager
     
+    @Binding var scale: CGFloat
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer()
             HStack(spacing: 0) {
                 Button(action: {
@@ -35,9 +37,9 @@ struct FloatingButtons: View {
                 })
                 
                 Button(action: {
-                    gameManager.toggleAutoplaySpeed()
+                    gameManager.previousDay()
                 }, label: {
-                    Image(systemName: gameManager.autoplaySpeed.rawValue)
+                    Image(systemName: "arrowshape.turn.up.left")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
@@ -50,8 +52,33 @@ struct FloatingButtons: View {
                         .aspectRatio(contentMode: .fit)
                 })
             }
-            .padding()
             .buttonStyle(SimpleButtonStyle())
+            .padding(.horizontal, 15)
+            
+            HStack(spacing: 0) {
+                Slider(value: $gameManager.speed, in: 0.1...0.9, step: 0.2, onEditingChanged: { data in
+                    gameManager.startAutoplay()
+                })
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(Color.white)
+                .cornerRadius(.greatestFiniteMagnitude)
+                .compositingGroup()
+                .shadow(radius: 2, y: 2)
+                .padding(.horizontal, 10)
+                
+                Slider(value: $scale, in: 0.5...1.5)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    .foregroundColor(.accentColor)
+                    .background(Color.white)
+                    .cornerRadius(.greatestFiniteMagnitude)
+                    .compositingGroup()
+                    .shadow(radius: 2, y: 2)
+                    .padding(.horizontal, 10)
+            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 20)
         }
     }
 }

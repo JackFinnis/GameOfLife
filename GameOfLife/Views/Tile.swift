@@ -14,7 +14,7 @@ struct Tile: View {
     var y: Int
     
     var tileColour: UIColor {
-        if gameManager.board[x][y] == true {
+        if gameManager.today.board[x][y] == true {
             return UIColor.white
         } else {
             return UIColor.black
@@ -25,7 +25,8 @@ struct Tile: View {
         Color(tileColour)
             .frame(width: 30, height: 30)
             .onTapGesture {
-                gameManager.board[x][y].toggle()
+                gameManager.today.board[x][y].toggle()
+                gameManager.objectWillChange.send()
             }
     }
 }

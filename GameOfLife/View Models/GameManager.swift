@@ -11,9 +11,10 @@ import Combine
 class GameManager: ObservableObject {
     
     @Published var size: Int = 10
-    @Published var board = [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10)
+    //@Published var board = [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10)
     @Published var playing: Bool = false
-    @Published var autoplaySpeed: AutoplaySpeed = .slow
+    @Published var speed: Double = 0.5
+    @Published var today: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10), yesterday: nil, tomorrow: nil)
     
     var cancellable: Cancellable?
     var autoplayImage: String {
@@ -27,29 +28,13 @@ class GameManager: ObservableObject {
     // Reset the board
     func resetGame() {
         stopAutoplay()
-        board = [[Bool]](repeating: [Bool](repeating: false, count: size), count: size)
-    }
-    
-    // Reset autoplay speed
-    func toggleAutoplaySpeed() {
-        if autoplaySpeed == .slow {
-            autoplaySpeed = .fast
-        } else {
-            autoplaySpeed = .slow
-        }
-        startAutoplay()
+        today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 10), count: 10), yesterday: nil, tomorrow: nil)
+        //board = [[Bool]](repeating: [Bool](repeating: false, count: size), count: size)
     }
     
     // Start autoplay
     func startAutoplay() {
         playing = true
-        var speed: Double {
-            if autoplaySpeed == .slow {
-                return 0.6
-            } else {
-                return 0.2
-            }
-        }
         cancellable = Timer.publish(every: speed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
@@ -64,10 +49,22 @@ class GameManager: ObservableObject {
         playing = false
     }
     
-    // Step one day into game
+    // Go back a day
+    func previousDay() {
+        stopAutoplay()
+        if today.yesterday != nil {
+            today = today.yesterday!
+        }
+    }
+    
+    // Step one day forward
     func nextDay() {
         stopAutoplay()
-        next()
+        if today.tomorrow != nil {
+            today = today.tomorrow!
+        } else {
+            next()
+        }
     }
     
     // Calculate the next day
@@ -75,10 +72,10 @@ class GameManager: ObservableObject {
         let countBoard = getCountBoard()
         
         // Update the board
-        var newBoard = board
-        for x in 0..<board.count {
-            for y in 0..<board.count {
-                if board[x][y] {
+        var newBoard = today.board
+        for x in 0..<today.board.count {
+            for y in 0..<today.board.count {
+                if today.board[x][y] {
                     // Currently alive
                     if countBoard[x][y] < 2 || countBoard[x][y] > 3 {
                         newBoard[x][y] = false
@@ -91,17 +88,21 @@ class GameManager: ObservableObject {
                 }
             }
         }
-        DispatchQueue.main.async {
-            self.board = newBoard
+        
+        // Only move on if board is different
+        if newBoard != today.board {
+            let newDay = Day(board: newBoard, yesterday: today, tomorrow: nil)
+            today.tomorrow = newDay
+            today = newDay
         }
     }
     
     // Return count board (each tile's number of alive neighbours)
     func getCountBoard() -> [[Int]] {
         var countBoard = [[Int]](repeating: [Int](repeating: 0, count: size), count: size)
-        for x in 0..<board.count {
-            for y in 0..<board.count {
-                if board[x][y] {
+        for x in 0..<today.board.count {
+            for y in 0..<today.board.count {
+                if today.board[x][y] {
                     countBoard = updateCountBoard(countBoard: countBoard, x: x, y: y)
                 }
             }
