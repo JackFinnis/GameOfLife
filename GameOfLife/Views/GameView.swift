@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var gameManager = GameManager()
+    @StateObject var gameManager = GameManager(size: 50)
     @State var scale: CGFloat = 1
     
     var body: some View {

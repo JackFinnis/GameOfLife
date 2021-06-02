@@ -17,8 +17,10 @@
 		F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */; };
 		F4630629266780B700D1C6FE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4630628266780B700D1C6FE /* GameManager.swift */; };
 		F4652DC22667A58100EBF81A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC12667A58100EBF81A /* Day.swift */; };
-		F4652DC62667CC6E00EBF81A /* StoredBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC52667CC6E00EBF81A /* StoredBoard.swift */; };
-		F4652DD02667CDA100EBF81A /* BoardDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */; };
+		F4652DE22667F3BF00EBF81A /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DE12667F3BF00EBF81A /* Pattern.swift */; };
+		F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DE52667F5F000EBF81A /* JsonLoader.swift */; };
+		F4652DEC2667FB1C00EBF81A /* FamousPatterns.json in Resources */ = {isa = PBXBuildFile; fileRef = F4652DDB2667F2C700EBF81A /* FamousPatterns.json */; };
+		F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DF32668039500EBF81A /* FamousPatternsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +36,10 @@
 		F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonStyle.swift; sourceTree = "<group>"; };
 		F4630628266780B700D1C6FE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		F4652DC12667A58100EBF81A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		F4652DC52667CC6E00EBF81A /* StoredBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredBoard.swift; sourceTree = "<group>"; };
-		F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDataStore.swift; sourceTree = "<group>"; };
+		F4652DDB2667F2C700EBF81A /* FamousPatterns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FamousPatterns.json; sourceTree = "<group>"; };
+		F4652DE12667F3BF00EBF81A /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		F4652DE52667F5F000EBF81A /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
+		F4652DF32668039500EBF81A /* FamousPatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousPatternsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */,
+				F46305EE2666496000D1C6FE /* Assets.xcassets */,
+				F46305F32666496000D1C6FE /* Info.plist */,
 				F46305FA2666497400D1C6FE /* Views */,
 				F46305FB2666498300D1C6FE /* View Models */,
 				F4652DBA26679A0F00EBF81A /* Models */,
-				F46305EE2666496000D1C6FE /* Assets.xcassets */,
-				F46305F32666496000D1C6FE /* Info.plist */,
+				F4652DDA2667F28D00EBF81A /* Data */,
 				F46305F02666496000D1C6FE /* Preview Content */,
 			);
 			path = GameOfLife;
@@ -92,6 +97,7 @@
 			children = (
 				F463060C2666742600D1C6FE /* GameView.swift */,
 				F46306102666745100D1C6FE /* FloatingButtons.swift */,
+				F4652DF32668039500EBF81A /* FamousPatternsView.swift */,
 				F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
@@ -111,10 +117,18 @@
 			isa = PBXGroup;
 			children = (
 				F4652DC12667A58100EBF81A /* Day.swift */,
-				F4652DCF2667CDA100EBF81A /* BoardDataStore.swift */,
-				F4652DC52667CC6E00EBF81A /* StoredBoard.swift */,
+				F4652DE12667F3BF00EBF81A /* Pattern.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F4652DDA2667F28D00EBF81A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F4652DDB2667F2C700EBF81A /* FamousPatterns.json */,
+				F4652DE52667F5F000EBF81A /* JsonLoader.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4652DEC2667FB1C00EBF81A /* FamousPatterns.json in Resources */,
 				F46305F22666496000D1C6FE /* Preview Assets.xcassets in Resources */,
 				F46305EF2666496000D1C6FE /* Assets.xcassets in Resources */,
 			);
@@ -188,13 +203,14 @@
 			files = (
 				F4630629266780B700D1C6FE /* GameManager.swift in Sources */,
 				F46305FE266649B100D1C6FE /* Tile.swift in Sources */,
-				F4652DC62667CC6E00EBF81A /* StoredBoard.swift in Sources */,
 				F463060626664A0600D1C6FE /* Board.swift in Sources */,
 				F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */,
-				F4652DD02667CDA100EBF81A /* BoardDataStore.swift in Sources */,
+				F4652DE22667F3BF00EBF81A /* Pattern.swift in Sources */,
+				F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
 				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
+				F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,7 @@ struct Tile: View {
     
     var body: some View {
         Color(tileColour)
-            .frame(width: 30, height: 30)
+            .frame(width: 50, height: 50)
             .onTapGesture {
                 gameManager.today.board[x][y].toggle()
                 gameManager.objectWillChange.send()

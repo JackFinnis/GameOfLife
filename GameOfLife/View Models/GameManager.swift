@@ -13,13 +13,19 @@ class GameManager: ObservableObject {
     // Board Sizes:
     //  - 25 for iPhone
     //  - 50 for iPad
-    @Published var size: Int = 50
+    @Published var size: Int
     @Published var playing: Bool = false
     @Published var speed: Double = 0.5
-    @Published var today: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil, tomorrow: nil)
+    @Published var today: Day
+    @Published var famousPatterns: [Pattern] = load("FamousPatterns.json")
+    var patternTypes: [String: [Pattern]] {
+        Dictionary(
+            grouping: famousPatterns,
+            by: { $0.type }
+        )
+    }
     
     var cancellable: Cancellable?
-    var boardDataStore = BoardDataStore()
     var savedDay: Day = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil, tomorrow: nil)
     var autoplayImage: String {
         if playing {
@@ -27,6 +33,12 @@ class GameManager: ObservableObject {
         } else {
             return "play.fill"
         }
+    }
+    
+    // MARK: - Initialiser
+    init(size: Int) {
+        self.size = size
+        self.today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: size), count: size), yesterday: nil, tomorrow: nil)
     }
     
     // MARK: - Private Methods
@@ -108,12 +120,12 @@ class GameManager: ObservableObject {
     
     // Save the current day
     func saveToday() {
-        print(today.board)
         savedDay = today
     }
     
     // Load saved day
     func loadSavedDay() {
+        stopAutoplay()
         today = savedDay
     }
     
@@ -153,7 +165,8 @@ class GameManager: ObservableObject {
     }
     
     // Load stored boards
-    func loadStoredBoard(board: StoredBoard) {
-        today = Day(board: boardDataStore.getBoard(board: board), yesterday: nil, tomorrow: nil)
+    func setBoard(board: [[Bool]]) {
+        stopAutoplay()
+        today = Day(board: board, yesterday: today, tomorrow: nil)
     }
 }

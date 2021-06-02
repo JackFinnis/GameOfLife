@@ -13,9 +13,9 @@ struct Board: View {
     
     var body: some View {
         ScrollView([.horizontal, .vertical], showsIndicators: false) {
-            HStack(spacing: 1) {
+            HStack(spacing: 2) {
                 ForEach(0...gameManager.size-1, id: \.self) { x in
-                    VStack(spacing: 1) {
+                    VStack(spacing: 2) {
                         ForEach(0...gameManager.size-1, id: \.self) { y in
                             Tile(x: x, y: y)
                         }
