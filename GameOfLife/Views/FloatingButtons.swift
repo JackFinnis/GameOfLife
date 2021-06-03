@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FloatingButtons: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-    
     @EnvironmentObject var gameManager: GameManager
     @Binding var scale: CGFloat
     
@@ -53,7 +52,8 @@ struct FloatingButtons: View {
                     Image(systemName: "safari")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }).sheet(isPresented: $showFamousPatternsSheet) {
+                })
+                .sheet(isPresented: $showFamousPatternsSheet) {
                     FamousPatternsView(showFamousPatternsSheet: $showFamousPatternsSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
@@ -63,10 +63,11 @@ struct FloatingButtons: View {
                 Button(action: {
                     showSavedPatternsSheet = true
                 }, label: {
-                    Image(systemName: "doc.on.clipboard")
+                    Image(systemName: "folder")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }).sheet(isPresented: $showSavedPatternsSheet) {
+                })
+                .sheet(isPresented: $showSavedPatternsSheet) {
                     SavedPatternsView(showSavedPatternsSheet: $showSavedPatternsSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
@@ -76,10 +77,11 @@ struct FloatingButtons: View {
                 Button(action: {
                     showSaveNewPatternSheet = true
                 }, label: {
-                    Image(systemName: "doc.on.doc")
+                    Image(systemName: "square.and.arrow.down")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }).sheet(isPresented: $showSaveNewPatternSheet) {
+                })
+                .sheet(isPresented: $showSaveNewPatternSheet) {
                     SaveNewPatternView(showSaveNewPatternSheet: $showSaveNewPatternSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)

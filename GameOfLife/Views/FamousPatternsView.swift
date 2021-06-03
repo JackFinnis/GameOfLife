@@ -11,18 +11,25 @@ struct FamousPatternsView: View {
     @EnvironmentObject var gameManager: GameManager
     @Binding var showFamousPatternsSheet: Bool
     
+    @State var searchText: String = ""
+    
     var body: some View {
         NavigationView {
-            List {
-                ForEach(gameManager.patternTypes.keys.sorted(), id: \.self) { patternType in
-                    Section(header: Text(patternType).textCase(nil)) {
-                        ForEach(gameManager.patternTypes[patternType]!) { pattern in
-                            Button(action: {
-                                gameManager.setBoard(board: pattern.board)
-                                showFamousPatternsSheet = false
-                            }, label: {
-                                Text(pattern.name)
-                            })
+            VStack(spacing: 0) {
+                SearchBar(searchText: $searchText)
+                List {
+                    ForEach(gameManager.famousPatternTypes.keys.sorted(), id: \.self) { famousPatternType in
+                        Section(header: Text(famousPatternType).textCase(nil)) {
+                            ForEach(gameManager.famousPatternTypes[famousPatternType]!.filter {
+                                self.searchText.isEmpty ? true : ($0.name.contains(self.searchText))
+                            }) { famousPattern in
+                                Button(action: {
+                                    gameManager.setBoard(board: famousPattern.board)
+                                    showFamousPatternsSheet = false
+                                }, label: {
+                                    Text(famousPattern.name)
+                                })
+                            }
                         }
                     }
                 }

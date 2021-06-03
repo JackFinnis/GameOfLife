@@ -17,11 +17,8 @@ class GameManager: ObservableObject {
     @Published var famousPatterns: [Pattern] = load("FamousPatterns.json")
     
     var cancellable: Cancellable?
-    var patternTypes: [String: [Pattern]] {
-        Dictionary(
-            grouping: famousPatterns,
-            by: { $0.type }
-        )
+    var famousPatternTypes: [String: [Pattern]] {
+        Dictionary(grouping: famousPatterns, by: { $0.type })
     }
     
     // MARK: - Initialiser

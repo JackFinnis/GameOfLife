@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */; };
 		F46305EF2666496000D1C6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46305EE2666496000D1C6FE /* Assets.xcassets */; };
-		F46305F22666496000D1C6FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46305F12666496000D1C6FE /* Preview Assets.xcassets */; };
 		F46305FE266649B100D1C6FE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46305FD266649B100D1C6FE /* Tile.swift */; };
 		F463060626664A0600D1C6FE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060526664A0600D1C6FE /* Board.swift */; };
 		F463060D2666742600D1C6FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060C2666742600D1C6FE /* GameView.swift */; };
@@ -22,17 +21,16 @@
 		F4652DEC2667FB1C00EBF81A /* FamousPatterns.json in Resources */ = {isa = PBXBuildFile; fileRef = F4652DDB2667F2C700EBF81A /* FamousPatterns.json */; };
 		F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DF32668039500EBF81A /* FamousPatternsView.swift */; };
 		F4652DF826681B3A00EBF81A /* SaveNewPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */; };
-		F4652DFC2668203700EBF81A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DFB2668203700EBF81A /* PersistenceController.swift */; };
 		F4652E012668211E00EBF81A /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */; };
 		F4652E0426682A2600EBF81A /* SavedPatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652E0326682A2600EBF81A /* SavedPatternsView.swift */; };
 		F4652E0726682F6300EBF81A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652E0626682F6200EBF81A /* SearchBar.swift */; };
+		F4652E1426694E1200EBF81A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652E1326694E1200EBF81A /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F46305E72666495E00D1C6FE /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeApp.swift; sourceTree = "<group>"; };
 		F46305EE2666496000D1C6FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F46305F12666496000D1C6FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F46305F32666496000D1C6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46305FD266649B100D1C6FE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F463060526664A0600D1C6FE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -46,10 +44,10 @@
 		F4652DE52667F5F000EBF81A /* JsonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLoader.swift; sourceTree = "<group>"; };
 		F4652DF32668039500EBF81A /* FamousPatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousPatternsView.swift; sourceTree = "<group>"; };
 		F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewPatternView.swift; sourceTree = "<group>"; };
-		F4652DFB2668203700EBF81A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		F4652E002668211E00EBF81A /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		F4652E0326682A2600EBF81A /* SavedPatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPatternsView.swift; sourceTree = "<group>"; };
 		F4652E0626682F6200EBF81A /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		F4652E1326694E1200EBF81A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,26 +81,13 @@
 			isa = PBXGroup;
 			children = (
 				F46305EA2666495E00D1C6FE /* GameOfLifeApp.swift */,
-				F46305EE2666496000D1C6FE /* Assets.xcassets */,
-				F46305F32666496000D1C6FE /* Info.plist */,
-				F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */,
 				F46305FA2666497400D1C6FE /* Views */,
 				F46305FB2666498300D1C6FE /* View Models */,
 				F4652DBA26679A0F00EBF81A /* Models */,
-				F4652DFA2668200C00EBF81A /* Persistance */,
-				F4652E09266832AF00EBF81A /* Formatters */,
-				F4652DDA2667F28D00EBF81A /* Model Data */,
-				F46305F02666496000D1C6FE /* Preview Content */,
+				F4652DDA2667F28D00EBF81A /* Data */,
+				F4652E1726694E4B00EBF81A /* Supporting Files */,
 			);
 			path = GameOfLife;
-			sourceTree = "<group>";
-		};
-		F46305F02666496000D1C6FE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F46305F12666496000D1C6FE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		F46305FA2666497400D1C6FE /* Views */ = {
@@ -111,10 +96,10 @@
 				F463060C2666742600D1C6FE /* GameView.swift */,
 				F46306102666745100D1C6FE /* FloatingButtons.swift */,
 				F4652DF32668039500EBF81A /* FamousPatternsView.swift */,
-				F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */,
 				F4652E0326682A2600EBF81A /* SavedPatternsView.swift */,
-				F4652E0626682F6200EBF81A /* SearchBar.swift */,
+				F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */,
 				F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */,
+				F4652E0626682F6200EBF81A /* SearchBar.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
 			);
@@ -125,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				F4630628266780B700D1C6FE /* GameManager.swift */,
+				F4652E1326694E1200EBF81A /* PersistenceController.swift */,
+				F4652DE52667F5F000EBF81A /* JsonLoader.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -138,28 +125,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F4652DDA2667F28D00EBF81A /* Model Data */ = {
+		F4652DDA2667F28D00EBF81A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F4652DFF2668211E00EBF81A /* Main.xcdatamodeld */,
 				F4652DDB2667F2C700EBF81A /* FamousPatterns.json */,
 			);
-			path = "Model Data";
+			path = Data;
 			sourceTree = "<group>";
 		};
-		F4652DFA2668200C00EBF81A /* Persistance */ = {
+		F4652E1726694E4B00EBF81A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F4652DFB2668203700EBF81A /* PersistenceController.swift */,
+				F46305EE2666496000D1C6FE /* Assets.xcassets */,
+				F46305F32666496000D1C6FE /* Info.plist */,
 			);
-			path = Persistance;
-			sourceTree = "<group>";
-		};
-		F4652E09266832AF00EBF81A /* Formatters */ = {
-			isa = PBXGroup;
-			children = (
-				F4652DE52667F5F000EBF81A /* JsonLoader.swift */,
-			);
-			path = Formatters;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4652DEC2667FB1C00EBF81A /* FamousPatterns.json in Resources */,
-				F46305F22666496000D1C6FE /* Preview Assets.xcassets in Resources */,
 				F46305EF2666496000D1C6FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,11 +221,11 @@
 				F4652E012668211E00EBF81A /* Main.xcdatamodeld in Sources */,
 				F4652DE22667F3BF00EBF81A /* Pattern.swift in Sources */,
 				F4652DF826681B3A00EBF81A /* SaveNewPatternView.swift in Sources */,
+				F4652E1426694E1200EBF81A /* PersistenceController.swift in Sources */,
 				F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
 				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
-				F4652DFC2668203700EBF81A /* PersistenceController.swift in Sources */,
 				F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
@@ -376,10 +356,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"GameOfLife/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4CQW4CFFYT;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GameOfLife/Info.plist;
+				INFOPLIST_FILE = "GameOfLife/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -398,10 +378,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"GameOfLife/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 4CQW4CFFYT;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GameOfLife/Info.plist;
+				INFOPLIST_FILE = "GameOfLife/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
