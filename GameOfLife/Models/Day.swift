@@ -10,11 +10,9 @@ import Foundation
 class Day {
     var board: [[Bool]]
     var yesterday: Day?
-    var tomorrow: Day?
     
-    init(board: [[Bool]], yesterday: Day?, tomorrow: Day?) {
+    init(board: [[Bool]], yesterday: Day?) {
         self.board = board
         self.yesterday = yesterday
-        self.tomorrow = tomorrow
     }
 }

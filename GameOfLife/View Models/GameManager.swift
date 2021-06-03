@@ -24,7 +24,7 @@ class GameManager: ObservableObject {
     // MARK: - Initialiser
     init(size: Int) {
         self.size = size
-        self.today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: size), count: size), yesterday: nil, tomorrow: nil)
+        self.today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: size), count: size), yesterday: nil)
     }
     
     // MARK: - Private Methods
@@ -52,8 +52,7 @@ class GameManager: ObservableObject {
         
         // Only move on if board is different
         if newBoard != today.board {
-            let newDay = Day(board: newBoard, yesterday: today, tomorrow: nil)
-            today.tomorrow = newDay
+            let newDay = Day(board: newBoard, yesterday: today)
             today = newDay
         }
     }
@@ -101,7 +100,7 @@ class GameManager: ObservableObject {
     // Set board
     func setBoard(board: [[Bool]]) {
         stopAutoplay()
-        today = Day(board: board, yesterday: today, tomorrow: nil)
+        today = Day(board: board, yesterday: today)
     }
     
     // Start autoplay
@@ -121,6 +120,35 @@ class GameManager: ObservableObject {
         playing = false
     }
     
+    // Start auto-next
+    func startAutoNext() {
+        stopAutoplay()
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.next()
+            }
+    }
+    
+    // Start auto-next
+    func startAutoPrevious() {
+        stopAutoplay()
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.autoPreviousDay()
+            }
+    }
+    
+    // Auto previous day
+    func autoPreviousDay() {
+        if today.yesterday != nil {
+            today = today.yesterday!
+        }
+    }
+    
     // Go back a day
     func previousDay() {
         stopAutoplay()
@@ -132,16 +160,18 @@ class GameManager: ObservableObject {
     // Step one day forward
     func nextDay() {
         stopAutoplay()
-        if today.tomorrow != nil {
-            today = today.tomorrow!
-        } else {
-            next()
-        }
+        next()
     }
     
     // Reset the board
-    func resetGame() {
+    func resetBoard() {
         stopAutoplay()
-        today = Day(board: getEmptyBoard(), yesterday: nil, tomorrow: nil)
+        today = Day(board: getEmptyBoard(), yesterday: today)
+    }
+    
+    // Reset the board and clear board history
+    func resetBoardClearHistory() {
+        stopAutoplay()
+        today = Day(board: getEmptyBoard(), yesterday: nil)
     }
 }

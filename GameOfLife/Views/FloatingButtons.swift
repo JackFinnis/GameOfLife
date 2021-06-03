@@ -15,6 +15,9 @@ struct FloatingButtons: View {
     @State var showFamousPatternsSheet: Bool = false
     @State var showSavedPatternsSheet: Bool = false
     @State var showSaveNewPatternSheet: Bool = false
+    @State var showClearBoardHistoryAlert: Bool = false
+    @State var longPressingNext: Bool = false
+    @State var longPressingPrevious: Bool = false
     
     var autoplayImage: String {
         if gameManager.playing {
@@ -31,7 +34,9 @@ struct FloatingButtons: View {
                 // Autoplay speed slider
                 HStack(spacing: 0) {
                     Slider(value: $gameManager.speed, in: 0.1...0.9, step: 0.2, onEditingChanged: { data in
-                        gameManager.startAutoplay()
+                        if gameManager.playing {
+                            gameManager.startAutoplay()
+                        }
                     })
                         .padding(.horizontal, 20)
                         .padding(.vertical, 10)
@@ -102,30 +107,66 @@ struct FloatingButtons: View {
                 
                 // Show previous day
                 Button(action: {
-                    gameManager.previousDay()
+                    if longPressingPrevious {
+                        longPressingPrevious = false
+                        gameManager.stopAutoplay()
+                    } else {
+                        gameManager.previousDay()
+                    }
                 }, label: {
                     Image(systemName: "arrowshape.turn.up.left")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
+                .simultaneousGesture(
+                    LongPressGesture()
+                        .onEnded { gesture in
+                            longPressingPrevious = true
+                            gameManager.startAutoPrevious()
+                        }
+                )
                 
                 // Show next day
                 Button(action: {
-                    gameManager.nextDay()
+                    if longPressingNext {
+                        longPressingNext = false
+                        gameManager.stopAutoplay()
+                    } else {
+                        gameManager.nextDay()
+                    }
                 }, label: {
                     Image(systemName: "arrowshape.turn.up.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
+                .simultaneousGesture(
+                    LongPressGesture()
+                        .onEnded { gesture in
+                            longPressingNext = true
+                            gameManager.startAutoNext()
+                        }
+                )
                 
                 // Reset board
                 Button(action: {
-                    gameManager.resetGame()
+                    gameManager.resetBoard()
                 }, label: {
                     Image(systemName: "clear")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
+                .contextMenu {
+                    Button(action: {
+                        gameManager.resetBoard()
+                    }, label: {
+                        Label("Reset Board", systemImage: "clear")
+                    })
+                    Button(action: {
+                        gameManager.resetBoardClearHistory()
+                    }, label: {
+                        Label("Clear History", systemImage: "trash")
+                    })
+                }
                 
                 // Zoom level slider
                 HStack(spacing: 0) {

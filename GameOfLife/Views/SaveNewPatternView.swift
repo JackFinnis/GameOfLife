@@ -60,10 +60,10 @@ struct SaveNewPatternView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
                         if patternName == "" {
-                            errorMessage = "Please enter the pattern's name"
+                            errorMessage = "Please enter your new pattern's name"
                             showErrorMessageAlert = true
                         } else if patternType == "" {
-                            errorMessage = "Please enter the pattern's tag"
+                            errorMessage = "Please enter your new pattern's tag"
                             showErrorMessageAlert = true
                         } else {
                             let newPattern = CDPattern(context: managedObjectContext)
