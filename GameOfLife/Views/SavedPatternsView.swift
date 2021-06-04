@@ -25,6 +25,8 @@ struct SavedPatternsView: View {
     @State var searchText: String = ""
     @State var patternName: String = ""
     @State var showErrorMessage: Bool = false
+    @State var showDeleteAlert: Bool = false
+    @State var patternToDelete: CDPattern?
     
     var body: some View {
         NavigationView {
@@ -45,7 +47,8 @@ struct SavedPatternsView: View {
                             }
                             .onDelete(perform: { indexSet in
                                 for index in indexSet {
-                                    managedObjectContext.delete(savedPatterns[index])
+                                    patternToDelete = savedPatternTypes[savedPatternType]![index]
+                                    showDeleteAlert = true
                                 }
                                 PersistenceController.shared.saveContext()
                             })
@@ -65,6 +68,18 @@ struct SavedPatternsView: View {
                 ToolbarItem(placement: .automatic) {
                     EditButton()
                 }
+            }
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Pattern?"),
+                    message: Text("\(patternToDelete == nil ? "Pattern" : patternToDelete!.name!) will be permanently deleted"),
+                    primaryButton: .destructive(Text("Confirm")) {
+                        if patternToDelete != nil {
+                            managedObjectContext.delete(patternToDelete!)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
     }

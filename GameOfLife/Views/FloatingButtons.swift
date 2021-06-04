@@ -155,18 +155,6 @@ struct FloatingButtons: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
-                .contextMenu {
-                    Button(action: {
-                        gameManager.resetBoard()
-                    }, label: {
-                        Label("Reset Board", systemImage: "clear")
-                    })
-                    Button(action: {
-                        gameManager.resetBoardClearHistory()
-                    }, label: {
-                        Label("Clear History", systemImage: "trash")
-                    })
-                }
                 
                 // Zoom level slider
                 HStack(spacing: 0) {

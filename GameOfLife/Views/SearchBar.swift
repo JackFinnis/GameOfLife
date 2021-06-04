@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchBar: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var searchText: String
     
     @State private var isEditing = false
@@ -18,7 +19,7 @@ struct SearchBar: View {
                 .disableAutocorrection(true)
                 .padding(8)
                 .padding(.horizontal, 26)
-                .background(Color(UIColor.systemGray6))
+                .background(colorScheme == .light ? Color(UIColor.systemGray6) : Color(UIColor.systemGray5))
                 .cornerRadius(8)
                 .overlay(
                     HStack(spacing: 0) {
