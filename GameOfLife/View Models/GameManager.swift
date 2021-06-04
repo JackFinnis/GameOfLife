@@ -12,11 +12,11 @@ class GameManager: ObservableObject {
     // MARK: - Properties
     @Published var size: Int
     @Published var playing: Bool = false
-    @Published var speed: Double = 0.5
+    @Published var speed: Double = 0.9
     @Published var today: Day
     @Published var famousPatterns: [Pattern] = load("FamousPatterns.json")
     
-    var timer: Timer?
+    var cancellable: Cancellable?
     var famousPatternTypes: [String: [Pattern]] {
         Dictionary(grouping: famousPatterns, by: { $0.type })
     }
@@ -106,31 +106,40 @@ class GameManager: ObservableObject {
     // Start autoplay
     func startAutoplay() {
         playing = true
-        timer = Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { _ in
-            self.next()
-        }
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.next()
+            }
     }
     
     // Stop autoplay
     func stopAutoplay() {
         playing = false
-        timer?.invalidate()
+        cancellable?.cancel()
     }
     
     // Start auto-next
     func startAutoNext() {
         stopAutoplay()
-        timer = Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { _ in
-            self.next()
-        }
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.next()
+            }
     }
     
     // Start auto-previous
     func startAutoPrevious() {
         stopAutoplay()
-        timer = Timer.scheduledTimer(withTimeInterval: speed, repeats: true) { _ in
-            self.autoPreviousDay()
-        }
+        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.autoPreviousDay()
+            }
     }
     
     // Auto-previous day

@@ -50,7 +50,6 @@ struct SavedPatternsView: View {
                                     patternToDelete = savedPatternTypes[savedPatternType]![index]
                                     showDeleteAlert = true
                                 }
-                                PersistenceController.shared.saveContext()
                             })
                         }
                     }
@@ -76,6 +75,7 @@ struct SavedPatternsView: View {
                     primaryButton: .destructive(Text("Confirm")) {
                         if patternToDelete != nil {
                             managedObjectContext.delete(patternToDelete!)
+                            PersistenceController.shared.saveContext()
                         }
                     },
                     secondaryButton: .cancel()

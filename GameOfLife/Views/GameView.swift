@@ -22,7 +22,6 @@ struct GameView: View {
                 .ignoresSafeArea()
             FloatingButtons(scale: $scale)
         }
-        .statusBar(hidden: true)
         .environmentObject(gameManager)
     }
 }
