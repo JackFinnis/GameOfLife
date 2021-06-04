@@ -73,7 +73,7 @@ struct FloatingButtons: View {
                         .aspectRatio(contentMode: .fit)
                 })
                 .sheet(isPresented: $showSavedPatternsSheet) {
-                    SavedPatternsView(showSavedPatternsSheet: $showSavedPatternsSheet)
+                    SavedPatternsView(showSavedPatternsSheet: $showSavedPatternsSheet, showSaveNewPatternSheet: $showSaveNewPatternSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
                 }

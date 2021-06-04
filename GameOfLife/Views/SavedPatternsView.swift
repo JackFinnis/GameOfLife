@@ -21,6 +21,7 @@ struct SavedPatternsView: View {
     
     @EnvironmentObject var gameManager: GameManager
     @Binding var showSavedPatternsSheet: Bool
+    @Binding var showSaveNewPatternSheet: Bool
     
     @State var searchText: String = ""
     @State var patternName: String = ""
@@ -30,29 +31,39 @@ struct SavedPatternsView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                SearchBar(searchText: $searchText)
-                List {
-                    ForEach(savedPatternTypes.keys.sorted(), id: \.self) { savedPatternType in
-                        Section(header: Text(savedPatternType).textCase(nil)) {
-                            ForEach(savedPatternTypes[savedPatternType]!.filter {
-                                self.searchText.isEmpty ? true : ($0.name!.contains(self.searchText))
-                            }) { (savedPattern: CDPattern) in
-                                Button(action: {
-                                    gameManager.setBoard(board: savedPattern.board!)
-                                    showSavedPatternsSheet = false
-                                }, label: {
-                                    Text(savedPattern.name!)
+            ZStack {
+                VStack(spacing: 0) {
+                    SearchBar(searchText: $searchText)
+                    List {
+                        ForEach(savedPatternTypes.keys.sorted(), id: \.self) { savedPatternType in
+                            Section(header: Text(savedPatternType).textCase(nil)) {
+                                ForEach(savedPatternTypes[savedPatternType]!.filter {
+                                    self.searchText.isEmpty ? true : ($0.name!.contains(self.searchText))
+                                }) { (savedPattern: CDPattern) in
+                                    Button(action: {
+                                        gameManager.setBoard(board: savedPattern.board!)
+                                        showSavedPatternsSheet = false
+                                    }, label: {
+                                        Text(savedPattern.name!)
+                                    })
+                                }
+                                .onDelete(perform: { indexSet in
+                                    for index in indexSet {
+                                        patternToDelete = savedPatternTypes[savedPatternType]![index]
+                                        showDeleteAlert = true
+                                    }
                                 })
                             }
-                            .onDelete(perform: { indexSet in
-                                for index in indexSet {
-                                    patternToDelete = savedPatternTypes[savedPatternType]![index]
-                                    showDeleteAlert = true
-                                }
-                            })
                         }
                     }
+                }
+                if savedPatternTypes.isEmpty {
+                    Button(action: {
+                        showSavedPatternsSheet = false
+                        showSaveNewPatternSheet = true
+                    }, label: {
+                        Text("Save pattern")
+                    })
                 }
             }
             .navigationTitle("My Patterns")
