@@ -7,24 +7,34 @@
 
 import Foundation
 import Combine
+import UIKit
 
-class GameManager: ObservableObject {
+class GameManager: NSObject, ObservableObject {
     // MARK: - Properties
-    @Published var size: Int
+    @Published var size: Int = 50
     @Published var playing: Bool = false
-    @Published var speed: Double = 0.9
-    @Published var today: Day
-    @Published var famousPatterns: [Pattern] = load("FamousPatterns.json")
-    
+    @Published var speed: Double = 1
+    @Published var today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: 50), count: 50), yesterday: nil)
+    @Published var famousPatterns: [Pattern] = GameOfLife.load("FamousPatterns.json")
+    @Published var searchText: String = ""
+
+    var formattedSpeed: Double {
+        switch speed {
+        case 1:
+            return 0.9
+        case 2:
+            return 0.7
+        case 3:
+            return 0.5
+        case 4:
+            return 0.3
+        default:
+            return 0.1
+        }
+    }
     var cancellable: Cancellable?
     var famousPatternTypes: [String: [Pattern]] {
         Dictionary(grouping: famousPatterns, by: { $0.type })
-    }
-    
-    // MARK: - Initialiser
-    init(size: Int) {
-        self.size = size
-        self.today = Day(board: [[Bool]](repeating: [Bool](repeating: false, count: size), count: size), yesterday: nil)
     }
     
     // MARK: - Private Methods
@@ -106,7 +116,7 @@ class GameManager: ObservableObject {
     // Start autoplay
     func startAutoplay() {
         playing = true
-        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+        cancellable = Timer.publish(every: formattedSpeed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
@@ -123,7 +133,7 @@ class GameManager: ObservableObject {
     // Start auto-next
     func startAutoNext() {
         stopAutoplay()
-        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+        cancellable = Timer.publish(every: formattedSpeed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
@@ -134,7 +144,7 @@ class GameManager: ObservableObject {
     // Start auto-previous
     func startAutoPrevious() {
         stopAutoplay()
-        cancellable = Timer.publish(every: speed, on: .main, in: .default)
+        cancellable = Timer.publish(every: formattedSpeed, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
@@ -167,5 +177,31 @@ class GameManager: ObservableObject {
     func resetBoard() {
         stopAutoplay()
         today = Day(board: getEmptyBoard(), yesterday: today)
+    }
+}
+
+extension GameManager: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange: String) {
+        self.searchText = textDidChange
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        searchBarshowCancelButton = true
+//        showCancelButton = true
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchText = ""
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

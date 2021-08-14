@@ -22,8 +22,7 @@ struct SavedPatternsView: View {
     @EnvironmentObject var gameManager: GameManager
     @Binding var showSavedPatternsSheet: Bool
     @Binding var showSaveNewPatternSheet: Bool
-    
-    @State var searchText: String = ""
+
     @State var patternName: String = ""
     @State var showErrorMessage: Bool = false
     
@@ -31,12 +30,12 @@ struct SavedPatternsView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    SearchBar(searchText: $searchText)
+                    SearchBar()
                     List {
                         ForEach(savedPatternTypes.keys.sorted(), id: \.self) { savedPatternType in
                             Section(header: Text(savedPatternType).textCase(nil)) {
                                 ForEach(savedPatternTypes[savedPatternType]!.filter {
-                                    self.searchText.isEmpty ? true : ($0.name!.contains(self.searchText))
+                                    gameManager.searchText.isEmpty ? true : ($0.name!.localizedCaseInsensitiveContains(gameManager.searchText))
                                 }) { (savedPattern: CDPattern) in
                                     Button(action: {
                                         gameManager.setBoard(board: savedPattern.board!)
@@ -55,11 +54,13 @@ struct SavedPatternsView: View {
                             }
                         }
                     }
+                    .animation(.default)
                 }
                 if savedPatternTypes.isEmpty {
                     Button(action: {
                         showSavedPatternsSheet = false
                         showSaveNewPatternSheet = true
+                        gameManager.searchText = ""
                     }, label: {
                         Text("Save pattern")
                     })
@@ -68,13 +69,14 @@ struct SavedPatternsView: View {
             .navigationTitle("My Patterns")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
+                    Button {
                         showSavedPatternsSheet = false
-                    }, label: {
-                        Text("Cancel")
-                    })
+                        gameManager.searchText = ""
+                    } label: {
+                        Text("Done")
+                    }
                 }
-                ToolbarItem(placement: .automatic) {
+                ToolbarItem {
                     EditButton()
                 }
             }

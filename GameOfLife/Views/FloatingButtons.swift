@@ -33,35 +33,42 @@ struct FloatingButtons: View {
             HStack(spacing: 0) {
                 // Autoplay speed slider
                 HStack(spacing: 0) {
-                    Slider(value: $gameManager.speed, in: 0.1...0.9, step: 0.2, onEditingChanged: { data in
+                    Slider(value: $gameManager.speed, in: 1...5, step: 1, onEditingChanged: { data in
                         if gameManager.playing {
                             gameManager.startAutoplay()
                         }
                     })
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 10)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    
                     Text("Speed")
                         .padding(.trailing, 20)
                         .padding(.vertical, 10)
                 }
                 .background(Color(UIColor.systemBackground))
-                .cornerRadius(.greatestFiniteMagnitude)
+                .clipShape(Capsule())
                 .compositingGroup()
-                .shadow(radius: 2, y: 2)
+                .shadow(color: Color(UIColor.systemFill), radius: 5)
                 .padding(.trailing, 15)
                 
                 // Display famous patterns
                 Button(action: {
                     showFamousPatternsSheet = true
                 }, label: {
-                    Image(systemName: "safari")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
                 .sheet(isPresented: $showFamousPatternsSheet) {
                     FamousPatternsView(showFamousPatternsSheet: $showFamousPatternsSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
+                        .animation(.default)
                 }
                 
                 // Paste saved day
@@ -69,13 +76,19 @@ struct FloatingButtons: View {
                     showSavedPatternsSheet = true
                 }, label: {
                     Image(systemName: "folder")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
-                .sheet(isPresented: $showSavedPatternsSheet) {
+                .sheet(isPresented: $showSavedPatternsSheet.animation()) {
                     SavedPatternsView(showSavedPatternsSheet: $showSavedPatternsSheet, showSaveNewPatternSheet: $showSaveNewPatternSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
+                        .animation(.default)
                 }
                 
                 // Copy today
@@ -83,13 +96,19 @@ struct FloatingButtons: View {
                     showSaveNewPatternSheet = true
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
-                .sheet(isPresented: $showSaveNewPatternSheet) {
+                .sheet(isPresented: $showSaveNewPatternSheet.animation()) {
                     SaveNewPatternView(showSaveNewPatternSheet: $showSaveNewPatternSheet)
                         .environment(\.managedObjectContext, self.managedObjectContext)
                         .environmentObject(gameManager)
+                        .animation(.default)
                 }
                 
                 // Toggle autoplay
@@ -101,8 +120,13 @@ struct FloatingButtons: View {
                     }
                 }, label: {
                     Image(systemName: autoplayImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 30))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
                 
                 // Show previous day
@@ -115,8 +139,13 @@ struct FloatingButtons: View {
                     }
                 }, label: {
                     Image(systemName: "arrowshape.turn.up.left")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
                 .simultaneousGesture(
                     LongPressGesture()
@@ -136,8 +165,13 @@ struct FloatingButtons: View {
                     }
                 }, label: {
                     Image(systemName: "arrowshape.turn.up.right")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
                 .simultaneousGesture(
                     LongPressGesture()
@@ -152,8 +186,13 @@ struct FloatingButtons: View {
                     gameManager.resetBoard()
                 }, label: {
                     Image(systemName: "clear")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .font(.system(size: 25))
+                        .frame(width: 60, height: 60)
+                        .background(Color(UIColor.systemBackground))
+                        .clipShape(Circle())
+                        .compositingGroup()
+                        .shadow(color: Color(UIColor.systemFill), radius: 5)
+                        .padding(.horizontal, 5)
                 })
                 
                 // Zoom level slider
@@ -166,12 +205,11 @@ struct FloatingButtons: View {
                         .padding(.vertical, 10)
                 }
                 .background(Color(UIColor.systemBackground))
-                .cornerRadius(.greatestFiniteMagnitude)
+                .clipShape(Capsule())
                 .compositingGroup()
-                .shadow(radius: 2, y: 2)
+                .shadow(color: Color(UIColor.systemFill), radius: 5)
                 .padding(.leading, 15)
             }
-            .buttonStyle(SimpleButtonStyle())
             .padding()
         }
     }

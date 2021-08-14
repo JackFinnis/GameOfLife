@@ -35,13 +35,15 @@ struct SaveNewPatternView: View {
                     TextField("Name", text: $patternName)
                     HStack(spacing: 0) {
                         TextField("Tag", text: $patternType)
-                        Picker("", selection: $patternType) {
-                            ForEach(savedPatternTypes.keys.sorted(), id: \.self) { type in
-                                Button(action: {
-                                    patternType = type
-                                }, label: {
-                                    Text(type)
-                                })
+                        if !savedPatternTypes.isEmpty {
+                            Picker("", selection: $patternType) {
+                                ForEach(savedPatternTypes.keys.sorted(), id: \.self) { type in
+                                    Button(action: {
+                                        patternType = type
+                                    }, label: {
+                                        Text(type)
+                                    })
+                                }
                             }
                         }
                     }
@@ -54,7 +56,7 @@ struct SaveNewPatternView: View {
                     Button(action: {
                         showSaveNewPatternSheet = false
                     }, label: {
-                        Text("Cancel")
+                        Text("Done")
                     })
                 }
                 ToolbarItem(placement: .confirmationAction) {

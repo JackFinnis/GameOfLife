@@ -13,7 +13,6 @@
 		F463060626664A0600D1C6FE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060526664A0600D1C6FE /* Board.swift */; };
 		F463060D2666742600D1C6FE /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463060C2666742600D1C6FE /* GameView.swift */; };
 		F46306112666745100D1C6FE /* FloatingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46306102666745100D1C6FE /* FloatingButtons.swift */; };
-		F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */; };
 		F4630629266780B700D1C6FE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4630628266780B700D1C6FE /* GameManager.swift */; };
 		F4652DC22667A58100EBF81A /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DC12667A58100EBF81A /* Day.swift */; };
 		F4652DE22667F3BF00EBF81A /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652DE12667F3BF00EBF81A /* Pattern.swift */; };
@@ -36,7 +35,6 @@
 		F463060526664A0600D1C6FE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		F463060C2666742600D1C6FE /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		F46306102666745100D1C6FE /* FloatingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtons.swift; sourceTree = "<group>"; };
-		F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonStyle.swift; sourceTree = "<group>"; };
 		F4630628266780B700D1C6FE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		F4652DC12667A58100EBF81A /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		F4652DDB2667F2C700EBF81A /* FamousPatterns.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FamousPatterns.json; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				F4652DF32668039500EBF81A /* FamousPatternsView.swift */,
 				F4652E0326682A2600EBF81A /* SavedPatternsView.swift */,
 				F4652DF726681B3A00EBF81A /* SaveNewPatternView.swift */,
-				F463061F2667756E00D1C6FE /* SimpleButtonStyle.swift */,
 				F4652E0626682F6200EBF81A /* SearchBar.swift */,
 				F463060526664A0600D1C6FE /* Board.swift */,
 				F46305FD266649B100D1C6FE /* Tile.swift */,
@@ -225,7 +222,6 @@
 				F4652DE62667F5F000EBF81A /* JsonLoader.swift in Sources */,
 				F46305EB2666495E00D1C6FE /* GameOfLifeApp.swift in Sources */,
 				F4652DC22667A58100EBF81A /* Day.swift in Sources */,
-				F46306202667756E00D1C6FE /* SimpleButtonStyle.swift in Sources */,
 				F4652DF42668039500EBF81A /* FamousPatternsView.swift in Sources */,
 				F463060D2666742600D1C6FE /* GameView.swift in Sources */,
 			);
@@ -357,7 +353,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 4CQW4CFFYT;
+				DEVELOPMENT_TEAM = T4L8JBB88A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GameOfLife/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -365,10 +361,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JackFinnis.GameOfLife;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackfinnis.GameOfLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -379,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 4CQW4CFFYT;
+				DEVELOPMENT_TEAM = T4L8JBB88A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GameOfLife/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -387,10 +384,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = JackFinnis.GameOfLife;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackfinnis.GameOfLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

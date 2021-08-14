@@ -11,17 +11,15 @@ struct FamousPatternsView: View {
     @EnvironmentObject var gameManager: GameManager
     @Binding var showFamousPatternsSheet: Bool
     
-    @State var searchText: String = ""
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                SearchBar(searchText: $searchText)
+                SearchBar()
                 List {
                     ForEach(gameManager.famousPatternTypes.keys.sorted(), id: \.self) { famousPatternType in
                         Section(header: Text(famousPatternType).textCase(nil)) {
                             ForEach(gameManager.famousPatternTypes[famousPatternType]!.filter {
-                                self.searchText.isEmpty ? true : ($0.name.contains(self.searchText))
+                                gameManager.searchText.isEmpty ? true : ($0.name.localizedCaseInsensitiveContains(gameManager.searchText))
                             }) { famousPattern in
                                 Button(action: {
                                     gameManager.setBoard(board: famousPattern.board)
@@ -39,8 +37,9 @@ struct FamousPatternsView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
                         showFamousPatternsSheet = false
+                        gameManager.searchText = ""
                     }, label: {
-                        Text("Cancel")
+                        Text("Done")
                     })
                 }
             }
